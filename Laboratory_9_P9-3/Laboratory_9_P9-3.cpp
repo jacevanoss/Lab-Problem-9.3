@@ -9,14 +9,21 @@
 #include <iostream>
 
 void displayRun(int values[], int size);
+bool hasRun(int values[], int size);
 
 using namespace std;
 
 int main() {
 
 	const int arrSize = 20;
-	int array[arrSize] = { 1,2,3,4,5,5,6,7,8,9,1,2,3,3,4,5,6,7,8,9 };
-	displayRun(array, arrSize);
+	int array[arrSize] = { 1,2,3,4,5,4,6,7,8,9,1,2,3,4,3,5,6,7,8,9 };
+	if (hasRun(array, arrSize)) {
+		displayRun(array, arrSize);
+	}
+	else {
+		displayRun(array, arrSize);
+	}
+	
 
 	return 0;
 }
@@ -48,4 +55,12 @@ void displayRun(int values[], int size) {
 		}
 	}
 	cout << endl;
+}
+bool hasRun(int values[], int size) {
+	for (int i = 0; i < size - 1; i++) {
+		if (values[i] == values[i + 1]) {
+			return true;
+		}
+	}
+	return false;
 }
