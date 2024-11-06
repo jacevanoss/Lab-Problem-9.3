@@ -7,6 +7,7 @@
 */
 
 #include <iostream>
+#include <cstdlib>
 
 void displayRun(int values[], int size);
 bool hasRun(int values[], int size);
@@ -14,15 +15,26 @@ bool hasRun(int values[], int size);
 using namespace std;
 
 int main() {
+	srand(time(0));
 
 	const int arrSize = 20;
-	int array[arrSize] = { 1,2,3,4,5,4,6,7,8,9,1,2,3,4,3,5,6,7,8,9 };
-	if (hasRun(array, arrSize)) {
-		displayRun(array, arrSize);
+	int array[arrSize];
+	while (true) {
+		for (int i = 0; i < arrSize; i++) {
+			array[i] = rand() % 6 + 1;
+		}
+		if (hasRun(array, arrSize)) {
+			cout << "Has run: ";
+			displayRun(array, arrSize);
+			break;
+		}
+		else {
+			cout << "No run: ";
+			displayRun(array, arrSize);
+		}
+
 	}
-	else {
-		displayRun(array, arrSize);
-	}
+	
 	
 
 	return 0;
